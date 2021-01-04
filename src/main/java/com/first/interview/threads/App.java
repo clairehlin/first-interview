@@ -1,4 +1,4 @@
-package com.mycompany.app;
+package com.first.interview.threads;
 
 /**
  * Hello world!
