@@ -11,18 +11,15 @@ import static org.assertj.core.api.Assertions.assertThatCode;
 
 // add a negative position ?
 
-class MListImplTest {
-
-    public static final IntFunction<String[]> stringArrayCreator = String[]::new;
-//    public static final IntFunction<String[]> stringArrayCreator = size -> new String[size];
+class MLinkedListImplTest {
 
     @Test
     void length_should_be_zero_when_empty() {
         // given
         // when
         // these two are equivalent
-//        MList<String> mList = new MListImpl<>(size -> new String[size]);
-        MList<String> mList = new MListImpl<>(stringArrayCreator);
+//        MList<String> mList = new MLinkedListImpl<>(size -> new String[size]);
+        MList<String> mList = new MLinkedListImpl<>();
 
         // then
         assertThat(mList.length()).isEqualTo(0);
@@ -32,7 +29,7 @@ class MListImplTest {
     void length_should_reflect_number_of_elements_and_values() {
         // given
         // when
-        MList<String> mList = new MListImpl<>(stringArrayCreator);
+        MList<String> mList = new MLinkedListImpl<>();
         mList.add("moran");
 
         // then
@@ -49,20 +46,20 @@ class MListImplTest {
     }
 
     @Test
-    void cannot_get_an_element_from_a_position_bigger_than_list_size() {
+    void cannot_get_an_element_from_a_position_bigger_than_array_size() {
         // given
-        MList<String> mList = new MListImpl<>(stringArrayCreator);
+        MList<String> mList = new MLinkedListImpl<>();
         mList.add("a");
         mList.add("b");
 
         // when/then
-        assertThatCode(() -> mList.get(100)).isInstanceOf(IndexOutOfBoundsException.class);
+        assertThatCode(()->mList.get(100)).isInstanceOf(IndexOutOfBoundsException.class);
     }
 
     @Test
     void can_check_if_an_array_contains_an_element() {
         // given
-        MList<String> mList = new MListImpl<>(stringArrayCreator);
+        MList<String> mList = new MLinkedListImpl<>();
         mList.add("a");
         mList.add("b");
 
@@ -73,7 +70,7 @@ class MListImplTest {
     @Test
     void cannot_accept_a_null_element_to_check_in_contains() {
         // given
-        MList<String> mList = new MListImpl<>(stringArrayCreator);
+        MList<String> mList = new MLinkedListImpl<>();
         mList.add("a");
 
         // when/then
@@ -84,7 +81,7 @@ class MListImplTest {
     void length_should_grow_gracefully_when_adding_elements() {
         // given
         // when
-        MList<String> mList = new MListImpl<>(stringArrayCreator);
+        MList<String> mList = new MLinkedListImpl<>();
         IntStream.range(0, 1000).forEach(i -> mList.add(String.valueOf(i)));
 
         // then
@@ -94,16 +91,16 @@ class MListImplTest {
     @Test
     void cannot_add_an_element_in_a_negative_position() {
         // given
-        MList<String> mList = new MListImpl<>(stringArrayCreator);
+        MList<String> mList = new MLinkedListImpl<>();
 
         // when/then
-        assertThatCode(() -> mList.add(-1, "a")).isInstanceOf(ArrayIndexOutOfBoundsException.class);
+        assertThatCode(() -> mList.add(-1, "a")).isInstanceOf(IndexOutOfBoundsException.class);
     }
 
     @Test
     void cannot_add_null_element() {
         // given
-        MList<String> mList = new MListImpl<>(stringArrayCreator);
+        MList<String> mList = new MLinkedListImpl<>();
 
         // when/then
         assertThatCode(() -> mList.add(null)).isInstanceOf(NullPointerException.class);
@@ -113,7 +110,7 @@ class MListImplTest {
     @Test
     void cannot_add_an_element_into_a_position_bigger_than_array_size() {
         // given
-        MList<String> mList = new MListImpl<>(stringArrayCreator);
+        MList<String> mList = new MLinkedListImpl<>();
         mList.add("a");
         mList.add("b");
 
@@ -124,7 +121,7 @@ class MListImplTest {
     @Test
     void can_remove_an_existing_element_by_an_element() {
         // given
-        MList<String> mList = new MListImpl<>(stringArrayCreator);
+        MList<String> mList = new MLinkedListImpl<>();
         mList.add("a");
         mList.add("b");
         mList.add("c");
@@ -146,7 +143,7 @@ class MListImplTest {
     @Test
     void can_remove_an_existing_element_by_position() {
         // given
-        MList<String> mList = new MListImpl<>(stringArrayCreator);
+        MList<String> mList = new MLinkedListImpl<>();
         mList.add("a");
         mList.add("b");
         mList.add("c");
@@ -168,7 +165,7 @@ class MListImplTest {
     @Test
     void can_remove_only_existing_element_by_an_element() {
         // given
-        MList<String> mList = new MListImpl<>(stringArrayCreator);
+        MList<String> mList = new MLinkedListImpl<>();
         mList.add("a");
 
         assertThat(mList.get(0)).isEqualTo("a");
@@ -191,7 +188,7 @@ class MListImplTest {
     @Test
     void can_remove_only_existing_element_by_position() {
         // given
-        MList<String> mList = new MListImpl<>(stringArrayCreator);
+        MList<String> mList = new MLinkedListImpl<>();
         mList.add("a");
 
         assertThat(mList.get(0)).isEqualTo("a");
@@ -207,12 +204,12 @@ class MListImplTest {
     @Test
     void cannot_remove_a_non_existing_element() {
         // given
-        MListImpl<String> mListImpl = new MListImpl<>(stringArrayCreator);
-        mListImpl.add("a");
-        mListImpl.add("b");
+        MLinkedListImpl<String> mLinkedListImpl = new MLinkedListImpl<>();
+        mLinkedListImpl.add("a");
+        mLinkedListImpl.add("b");
 
         // when/then
-        assertThatCode(() -> mListImpl.remove("c"))
+        assertThatCode(() -> mLinkedListImpl.remove("c"))
                 .isInstanceOf(NoSuchElementException.class)
                 .hasMessageContaining("cannot find element: c");
     }
@@ -220,7 +217,7 @@ class MListImplTest {
     @Test
     void cannot_remove_a_null_element() {
         // given
-        MList<String> mList = new MListImpl<>(stringArrayCreator);
+        MList<String> mList = new MLinkedListImpl<>();
         mList.add("a");
 
         // when/then
@@ -231,7 +228,7 @@ class MListImplTest {
     @Test
     void can_add_an_element_into_a_specific_position() {
         // given
-        MList<String> mList = new MListImpl<>(stringArrayCreator);
+        MList<String> mList = new MLinkedListImpl<>();
         mList.add("a");
         mList.add("b");
         mList.add("f");
@@ -250,7 +247,7 @@ class MListImplTest {
     @Test
     void can_add_an_element_into_position_zero() {
         // given
-        MList<String> mList = new MListImpl<>(stringArrayCreator);
+        MList<String> mList = new MLinkedListImpl<>();
         mList.add("a");
         mList.add("b");
         mList.add("f");
@@ -269,7 +266,7 @@ class MListImplTest {
     @Test
     void can_add_an_element_into_the_last_position() {
         // given
-        MList<String> mList = new MListImpl<>(stringArrayCreator);
+        MList<String> mList = new MLinkedListImpl<>();
         mList.add("a");
         mList.add("b");
         mList.add("f");
@@ -288,7 +285,7 @@ class MListImplTest {
     @Test
     void can_add_an_element_into_empty_list_by_position() {
         // given
-        MList<String> mList = new MListImpl<>(stringArrayCreator);
+        MList<String> mList = new MLinkedListImpl<>();
 
         // when
         mList.add(0, "c");
@@ -299,9 +296,9 @@ class MListImplTest {
     }
 
     @Test
-    void cannot_remove_an_element_from_a_position_bigger_than_array_size() {
+    void cannot_remove_an_element_from_a_position_bigger_than_list_size() {
         // given
-        MList<String> mList = new MListImpl<>(stringArrayCreator);
+        MList<String> mList = new MLinkedListImpl<>();
         mList.add("a");
         mList.add("b");
         mList.add("c");
@@ -314,31 +311,16 @@ class MListImplTest {
     @Test
     void can_remove_all_the_same_elements_in_an_array() {
         // given
-        MList<String> mList = new MListImpl<>(stringArrayCreator);
+        MList<String> mList = new MLinkedListImpl<>();
         mList.add("a");
         mList.add("b");
         mList.add("a");
 
         // when
         mList.removeAll("a");
+
+        // then
         assertThat(mList.length()).isEqualTo(1);
         assertThat(mList.get(0)).isEqualTo("b");
     }
-
-    // lambda class
-    class X implements IntFunction<String[]> {
-
-        @Override
-        public String[] apply(int value) {
-            return new String[0];
-        }
-    }
-    // lambda is an implementation of an interface with one method
-    // that method has input and output-producing body
-    // lambda has input and output-producing body separated by an arrow
-    // we need a variable in the lambda to contain the input
-    // we need to put the body of the method as the body of the lambda
-    // we need to separate the two elements above by an arrow
-    // v -> { return new String[0]; }
-    // v -> new String[0]
 }
