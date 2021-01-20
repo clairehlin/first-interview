@@ -16,6 +16,7 @@ class MArrayStackTest {
     @Test
     void can_push_an_element_into_array_stack() {
         // given
+
         MArrayStack<String> stack = new MArrayStack<>(stringArrayCreator);
         assertThat(stack.length()).isEqualTo(0);
 
