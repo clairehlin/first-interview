@@ -44,8 +44,8 @@ public class MArraySet<T> implements MSet<T> {
 
         for (int i = 0; i < size; i++) {
             if (ts[i].equals(t)) {
-                ts[i] = ts[size-1];
-                ts[size-1] = null;
+                ts[i] = ts[size - 1];
+                ts[size - 1] = null;
                 size--;
                 sizeDown();
                 return;
@@ -56,23 +56,33 @@ public class MArraySet<T> implements MSet<T> {
     }
 
     private void sizeDown() {
-        if (ts.length > 2*size()) {
+        if (ts.length > 2 * size()) {
             int newSize = ts.length / 2;
             T[] newTs = arrayCreator.apply(newSize);
             System.arraycopy(ts, 0, newTs, 0, size());
             ts = newTs;
         }
-        
+
     }
 
     @Override
     public boolean contains(T t) {
+        Validate.notNull(t);
+
         for (int i = 0; i < size; i++) {
             if (ts[i].equals(t)) {
                 return true;
             }
         }
         return false;
+    }
+
+    public boolean isEmpty() {
+        if (size == 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
