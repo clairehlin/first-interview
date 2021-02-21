@@ -82,8 +82,27 @@ public class MLinkedTree implements MTree {
             // removing the root
             if (root == targetNode) {
                 // TODO
+                if (isLeaf(targetNode)) {
+                    root = null;
+                    size--;
+                }
                 // root has one child
+                else if (hasOneChild(targetNode)) {
+                    if (parent.left != null) {
+                        root = parent.left;
+                    } else {
+                        root = parent.right;
+                    }
+                    size--;
+                }
                 // root has two children
+                else {
+                    root = targetNode.left;
+                    root.right = targetNode.right;
+                    targetNode.left = null;
+                    targetNode.right = null;
+                    size--;
+                }
             } else if (isLeaf(targetNode)) {
                 // finding the targetNode is on the left or on the right of the parent
                 if (parent.left == targetNode) {
@@ -91,6 +110,7 @@ public class MLinkedTree implements MTree {
                 } else {
                     parent.right = null;
                 }
+                size--;
             } else if (hasOneChild(targetNode)) {
                 if (targetNode.left != null) {
                     if (parent.left == targetNode) {
@@ -99,7 +119,6 @@ public class MLinkedTree implements MTree {
                         parent.right = targetNode.left;
                     }
                     targetNode.left = null;
-
                 } else {
                     if (parent.left == targetNode) {
                         parent.left = targetNode.right;
@@ -108,6 +127,7 @@ public class MLinkedTree implements MTree {
                     }
                     targetNode.right = null;
                 }
+                size--;
             } else {
                 int minimum = findMinimum(targetNode.right);
                 targetNode.key = minimum;
