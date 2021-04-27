@@ -1,10 +1,14 @@
 package com.first.interview.tree;
 
+import java.util.LinkedList;
+import java.util.List;
 import java.util.NoSuchElementException;
+
+import static java.util.Collections.emptyList;
 
 public class MLinkedTree implements MTree {
     private Node root;
-    int size = 0;
+    private int size = 0;
 
     @Override
     public void insert(int n) {
@@ -43,7 +47,7 @@ public class MLinkedTree implements MTree {
     @Override
     public boolean contains(int n) {
         if (root == null) {
-            throw new NoSuchElementException("element does not exist: " + n);
+            return false;
         }
         if (root.key == n) {
             return true;
@@ -55,7 +59,7 @@ public class MLinkedTree implements MTree {
 
     private boolean findTargetNode(Node root, int n) {
         if (root == null) {
-            throw new NoSuchElementException("element does not exist: " + n);
+            return false;
         }
         if (root.key == n) {
             return true;
@@ -81,27 +85,27 @@ public class MLinkedTree implements MTree {
         } else {
             // removing the root
             if (root == targetNode) {
-                // TODO
                 if (isLeaf(targetNode)) {
                     root = null;
                     size--;
                 }
                 // root has one child
                 else if (hasOneChild(targetNode)) {
-                    if (parent.left != null) {
-                        root = parent.left;
+                    Node temp = root;
+                    if (root.left != null) {
+                        root = root.left;
+                        temp.left = null;
                     } else {
-                        root = parent.right;
+                        root = root.right;
+                        temp.right = null;
                     }
                     size--;
                 }
                 // root has two children
                 else {
-                    root = targetNode.left;
-                    root.right = targetNode.right;
-                    targetNode.left = null;
-                    targetNode.right = null;
-                    size--;
+                    int minimum = findMinimum(targetNode.right);
+                    targetNode.key = minimum;
+                    remove(targetNode, targetNode.right, minimum);
                 }
             } else if (isLeaf(targetNode)) {
                 // finding the targetNode is on the left or on the right of the parent
@@ -166,5 +170,25 @@ public class MLinkedTree implements MTree {
         int key;
         Node left;
         Node right;
+    }
+
+    @Override
+    public List<Integer> infix() {
+        return infix(root);
+    }
+
+    public List<Integer> infix(Node node) {
+        if (node == null) {
+            return emptyList();
+        }
+        List<Integer> all = new LinkedList<>();
+        if (node.left != null) {
+            all.addAll(infix(node.left));
+        }
+        all.add(node.key);
+        if (node.right != null) {
+            all.addAll(infix(node.right));
+        }
+        return all;
     }
 }

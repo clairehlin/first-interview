@@ -8,7 +8,7 @@ import java.util.NoSuchElementException;
 public class MLinkedQueue<T> implements MQueue<T> {
     private Node<T> front;
     private Node<T> rear;
-    int currentSize = 0;
+    private int currentSize = 0;
 
     @Override
     public int length() {

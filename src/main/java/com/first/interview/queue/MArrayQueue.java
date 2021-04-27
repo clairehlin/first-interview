@@ -8,9 +8,9 @@ import java.util.function.IntFunction;
 
 public class MArrayQueue<T> implements MQueue<T> {
     private T[] ts;
-    int front;
-    int rear;
-    IntFunction<T[]> arrayCreator;
+    private int front;
+    private int rear;
+    private final IntFunction<T[]> arrayCreator;
 
     public MArrayQueue(IntFunction<T[]> arrayCreator) {
         ts = arrayCreator.apply(5);

@@ -1,10 +1,10 @@
 package com.first.interview.tree;
 
-class MLinkedTreeTest extends TreeTestBase {
+class MArrayTreeTest extends TreeTestBase {
 
     @Override
     MTree treeOf(int... ints) {
-        MLinkedTree tree = new MLinkedTree();
+        MArrayTree tree = new MArrayTree();
         for (int i : ints) {
             tree.insert(i);
         }
