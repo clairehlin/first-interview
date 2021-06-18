@@ -4,6 +4,8 @@ import org.apache.commons.lang3.Validate;
 
 import static org.apache.commons.lang3.ArrayUtils.swap;
 
+// O(Logn)
+
 public class QuickSort implements Sort {
 
     @Override

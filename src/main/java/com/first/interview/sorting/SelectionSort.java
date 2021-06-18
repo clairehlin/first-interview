@@ -2,7 +2,8 @@ package com.first.interview.sorting;
 
 import org.apache.commons.lang3.Validate;
 
-public class SelectionSort implements Sort {
+// o(n*n) n square
+ public class SelectionSort implements Sort {
 
     @Override
     public void apply(Integer[] values) {

@@ -2,6 +2,8 @@ package com.first.interview.sorting;
 
 import org.apache.commons.lang3.Validate;
 
+// O(n*n) n square
+
 public class BubbleSort implements Sort{
     @Override
     public void apply(Integer[] values) {
