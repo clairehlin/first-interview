@@ -4,25 +4,36 @@ import java.util.Arrays;
 
 public class BuySell {
     public int maxProfit(int[] prices) {
+        int minPrice = Integer.MAX_VALUE;
         int maxProfit = 0;
 
-        for (int i = 0; i < prices.length - 1; i++) {
-            for (int j = i + 1; j < prices.length; j++) {
-                int profit = prices[j] - prices[i];
-
-                if (profit > maxProfit) {
-                    maxProfit = profit;
-                }
+        for (int i = 0; i < prices.length; i++) {
+            if (prices[i] < minPrice) {
+                minPrice = prices[i];
+            } else if (prices[i] - minPrice > maxProfit) {
+                maxProfit = prices[i] - minPrice;
             }
         }
 
         return maxProfit;
     }
 
-    public static void main(String[] args) {
-        BuySell buySell = new BuySell();
-        int[] prices = {7, 1, 5, 3, 6, 4};
-        System.out.println(buySell.maxProfit(prices));
+    // brute force solution exceeded time limit
+    public int maxProfit2(int[] prices) {
+        int max = 0;
 
+        for (int i = 0; i < prices.length - 1; i++) {
+            if (prices[i] > prices[i + 1]) {
+                continue;
+            } else {
+                for (int j = i + 1; j < prices.length; j++) {
+                    if (prices[i] < prices[j]) {
+                        int current = prices[j] - prices[i];
+                        max = Math.max(max, current);
+                    }
+                }
+            }
+        }
+        return max;
     }
 }
