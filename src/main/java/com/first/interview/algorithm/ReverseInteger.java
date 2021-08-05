@@ -2,12 +2,21 @@ package com.first.interview.algorithm;
 
 public class ReverseInteger {
     public int reverse(int x) {
-        int rev = 0;
-        while (x != 0) {
-            int pop = x % 10;
-            x = x/10;
-            rev = rev * 10 + pop;
-        }
-        return rev;
+       int input = Math.abs(x);
+       int res = 0;
+
+       while (input >= 10) {
+           int remainder = input % 10;
+           res = res * 10 + remainder;
+           input = input / 10;
+       }
+
+       res = res * 10 + input;
+
+      if (x < 0) {
+           return -res;
+       } else {
+           return res;
+       }
     }
 }

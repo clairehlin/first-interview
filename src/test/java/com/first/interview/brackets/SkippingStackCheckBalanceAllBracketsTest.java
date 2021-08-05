@@ -12,7 +12,10 @@ class SkippingStackCheckBalanceAllBracketsTest extends AbstractCheckBalanceTest 
         return new SkippingStackCheckBalanceAllBrackets();
     }
 
+    // the test name does not represent the test case, because we are overriding the original behaviour
+    // this is a happy path test case, not a failure
     @Test
+    @Override
     void fails_for_non_parenthesis_input() {
         // given
         String input = "void fails_for_non_parenthesis_input() {\n" +
