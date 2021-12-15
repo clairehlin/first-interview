@@ -4,28 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BTPreorderTraversal {
-    public List<Integer> preorderTraversal(TreeNode root) {
+    public List<Integer> preorder(TreeNode root) {
         List<Integer> list = new ArrayList<>();
 
+        return preorderList(root, list);
+    }
+
+    private List<Integer> preorderList(TreeNode root, List<Integer> list) {
         if (root == null) {
-            return list;
+            // do nothing
         } else {
-            preorderChild(root, list);
+            list.add(root.val);
+            preorderList(root.left, list);
+            preorderList(root.right, list);
         }
         return list;
     }
-
-    private List<Integer> preorderChild(TreeNode node, List<Integer> list) {
-        list.add(node.val);
-
-        if (node.left != null) {
-            list = preorderChild(node.left, list);
-        }
-
-        if (node.right != null) {
-            list = preorderChild(node.right, list);
-        }
-        return list;
-    }
-
 }

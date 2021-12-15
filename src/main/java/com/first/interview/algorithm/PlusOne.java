@@ -26,6 +26,5 @@ public class PlusOne {
             }
         }
         return  res;
-
     }
 }

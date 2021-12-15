@@ -28,7 +28,7 @@ public class FastExplicitValidPalindromeII implements ValidPalindromeII {
 
     //find out breaking point - where two chars (one from the beginning, one from the end) are two equal
     // if two chars are not equal, return the position of the beginning pointer
-    // else (the entire char[] char is palindrome, return return Integer.MIN_VALUE (or Integer.MAX_VALUE)
+    // else (the entire char[] char is palindrome, return Integer.MIN_VALUE (or Integer.MAX_VALUE)
     private int isPalindrome(char[] chars, int low, int high) {
 
         while (low < high) {

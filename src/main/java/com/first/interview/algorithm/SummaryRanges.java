@@ -28,4 +28,12 @@ public class SummaryRanges {
 
         return list;
     }
+
+    public static void main(String[] args) {
+        SummaryRanges summaryRanges2 = new SummaryRanges();
+        int[] input = {0, 1, 2, 4, 5};
+        List<String> res = summaryRanges2.summaryRanges(input);
+
+        System.out.println(res);
+    }
 }

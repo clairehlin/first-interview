@@ -1,6 +1,7 @@
 package com.first.interview.algorithm;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class InorderTraversal {
@@ -13,11 +14,14 @@ public class InorderTraversal {
     }
 
     private List<Integer> build(TreeNode node, List<Integer> list) {
+        if (node == null) {
+            return Collections.emptyList();
+        }
         if (node.left != null) {
             build(node.left, list);
-        } else {
-            list.add(node.val);
         }
+
+        list.add(node.val);
 
         if (node.right != null) {
             build(node.right, list);

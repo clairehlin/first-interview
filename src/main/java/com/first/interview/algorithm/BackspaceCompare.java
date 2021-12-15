@@ -1,5 +1,9 @@
 package com.first.interview.algorithm;
-
+/*
+Input: s = "ab#c", t = "ad#c"
+Output: true
+Explanation: Both s and t become "ac".
+ */
 import java.util.Stack;
 
 public class BackspaceCompare {

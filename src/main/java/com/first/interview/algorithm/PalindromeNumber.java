@@ -8,17 +8,15 @@ public class PalindromeNumber {
             return true;
         }
 
-        int input = x;
         int reversedNum = 0;
-
+        int input = x;
         while (input >= 10) {
-            int remainder = input % 10;
-            reversedNum = (reversedNum + remainder) * 10;
+            reversedNum = reversedNum * 10 + input % 10;
             input = input / 10;
         }
 
-        reversedNum = reversedNum + input;
+        reversedNum = reversedNum * 10 + input;
 
-        return x == reversedNum;
+        return reversedNum == x;
     }
 }
