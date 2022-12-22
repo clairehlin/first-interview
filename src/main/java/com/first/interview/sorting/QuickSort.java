@@ -4,7 +4,7 @@ import org.apache.commons.lang3.Validate;
 
 import static org.apache.commons.lang3.ArrayUtils.swap;
 
-// O(Logn)
+// O(nLog(n))
 
 public class QuickSort implements Sort {
 
@@ -27,19 +27,27 @@ public class QuickSort implements Sort {
         quickSort(values, newMiddle + 1, high);
     }
 
+    // the idea of partition is to move everything that is larger than the pivot value to its right
+    // and everything that is less than the pivot value to its left
+    // return the position of pivot,
+    // so that next cycle of quick sort can start from (low -> (pivot - 1)) and ((pivot + 1) -> high)
+    // the pivot is the value at index high
+    // nextSpotToFill tracks the next element that has value greater than the pivot value. so when we find an
+    // element that is less than the pivot, we swap it with the greater element (element at nextSpotToFill)
     private int partition(Integer[] values, int low, int high) {
         Integer pivotValue = values[high];
-        int nextSpotToFill = low - 1;
+        int nextSpotToFill = low;
 
         for (int i = low; i < high; i++) {
             if (values[i] < pivotValue) {
-                swap(values, ++nextSpotToFill, i);
+                // when we find an element that is less than the pivot,
+                // we swap it with the greater element (element at nextSpotToFill)
+                swap        (values, nextSpotToFill++, i);
             }
         }
 
         // now put the pivot element in the correct position. The pivot position will never change from now.
-        swap(values, ++nextSpotToFill, high);
+        swap(values, nextSpotToFill, high);
         return nextSpotToFill; //this is the index for the pivot and is the correct position in the array forever from now
     }
-
 }

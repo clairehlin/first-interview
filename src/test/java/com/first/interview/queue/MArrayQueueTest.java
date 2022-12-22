@@ -2,7 +2,7 @@ package com.first.interview.queue;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.NoSuchElementException;
+import java.util.*;
 import java.util.function.IntFunction;
 import java.util.stream.IntStream;
 
@@ -83,5 +83,14 @@ class MArrayQueueTest {
 
         // then
         assertThat(q.length()).isEqualTo(300);
+    }
+
+    @Test
+    void test() {
+        List<String> list = new ArrayList<>();
+        list.add("apple");
+        list.add("mango");
+        list.remove("mango");
+        System.out.printf(list.get(0));
     }
 }

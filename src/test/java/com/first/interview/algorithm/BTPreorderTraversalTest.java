@@ -16,7 +16,7 @@ class BTPreorderTraversalTest {
 
         // when
         BTPreorderTraversal btPreorderTraversal = new BTPreorderTraversal();
-        List<Integer> res = btPreorderTraversal.preorderTraversal(root);
+        List<Integer> res = btPreorderTraversal.preorder(root);
 
         // then
         assertThat(res).isEqualTo(List.of(1, 2));
@@ -31,7 +31,7 @@ class BTPreorderTraversalTest {
 
         // when
         BTPreorderTraversal btPreorderTraversal = new BTPreorderTraversal();
-        List<Integer> res = btPreorderTraversal.preorderTraversal(root);
+        List<Integer> res = btPreorderTraversal.preorder(root);
 
         // then
         assertThat(res).isEqualTo(List.of(1, 2, 3));
@@ -49,7 +49,7 @@ class BTPreorderTraversalTest {
 
         // when
         BTPreorderTraversal btPreorderTraversal = new BTPreorderTraversal();
-        List<Integer> res = btPreorderTraversal.preorderTraversal(root);
+        List<Integer> res = btPreorderTraversal.preorder(root);
 
         // then
         assertThat(res).isEqualTo(List.of(1, 2, 3, 7, 8));

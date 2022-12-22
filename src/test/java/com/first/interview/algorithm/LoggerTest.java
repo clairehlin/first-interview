@@ -16,6 +16,7 @@ class LoggerTest {
         assertThat(logger.shouldPrintMessage(0, "foo")).isFalse();
         assertThat(logger.shouldPrintMessage(11, "foo")).isTrue();
         assertThat(logger.shouldPrintMessage(11, "foo")).isFalse();
+        assertThat(logger.shouldPrintMessage(21, "foo")).isTrue();
     }
 
 }

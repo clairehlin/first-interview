@@ -17,4 +17,15 @@ class SqrtTest {
         assertThat(res).isEqualTo(3);
     }
 
+    @Test
+    void can_find_sqrt2() {
+        // given
+        int x = 8;
+
+        // when
+        int res = new Sqrt().mySqrt(x);
+
+        // then
+        assertThat(res).isEqualTo(2);
+    }
 }

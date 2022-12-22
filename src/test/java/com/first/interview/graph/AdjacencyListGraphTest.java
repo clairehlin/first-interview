@@ -201,4 +201,11 @@ class AdjacencyListGraphTest {
             sum += input;
         }
     }
+
+    @Test
+    void empty_map_test() {
+     boolean visited[] = new boolean[3];
+     visited[0] = true;
+
+    }
 }

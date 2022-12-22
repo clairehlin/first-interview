@@ -1,5 +1,14 @@
 package com.first.interview.algorithm;
+/*
+https://leetcode.com/problems/roman-to-integer/
+create a Map to put all symbols as keys, their values as values
+traverse input String from left to right (character by character)
+based on map, look up current value(current character) and next value (next character)
 
+if current value < next value, sum = sum + (next value - current value), then move 2 characters
+otherwise, sum = sum + current value , move 1 character
+
+ */
 import java.util.HashMap;
 import java.util.Map;
 

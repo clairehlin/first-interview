@@ -1,5 +1,9 @@
 package com.first.interview.algorithm;
+/*
+https://leetcode.com/problems/two-sum/
 
+
+ */
 public class TwoSum {
     public int[] twoSum(int[] numbers, int target) {
         int searchingNum = 0;
@@ -25,8 +29,8 @@ public class TwoSum {
 
         while (start < end) {
             if (numbers[start] + numbers[end] == target) {
-                res[0] = start + 1;
-                res[1] = end + 1;
+                res[0] = start;
+                res[1] = end;
                 break;
             } else if (numbers[start] + numbers[end] < target) {
                 start++;

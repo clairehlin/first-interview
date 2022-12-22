@@ -1,32 +1,32 @@
 package com.first.interview.algorithm;
+/*
+https://leetcode.com/problems/majority-element/
 
-import java.util.*;
+create a Map
+iterate entire array to populate map
+create a count
+loop through every entry in the map, if the value of the entry > count, assign the key value of the entry to result
+ */
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class MajorityElement {
     public int majorityElement(int[] nums) {
         Map<Integer, Integer> map = new HashMap<>();
 
         for (int num : nums) {
-//            map.merge(num, 1, Integer::sum);
-//            map.compute(num, (k, v) -> v == null ? 1 : v + 1);
-//            map.put(num, map.getOrDefault(num, 0) + 1);
-           if (!map.containsKey(num)) {
-                map.put(num, 1);
-            } else {
-                int value = map.get(num);
-                map.put(num, value + 1);
-            }
+            map.put(num, map.getOrDefault(num, 0) + 1);
         }
 
-        int majorityRate = nums.length / 2;
+        int count = nums.length / 2;
         int result = 0;
-
-        for (int num : nums) {
-            int current = map.get(num);
-            if (current > majorityRate) {
-                result = num;
+        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+            if (entry.getValue() > count) {
+                result = entry.getKey();
             }
         }
+
         return result;
     }
 }

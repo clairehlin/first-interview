@@ -1,5 +1,12 @@
 package com.first.interview.algorithm;
 
+/*
+https://leetcode.com/problems/fizz-buzz/submissions/
+
+for loop starting from 1
+if the current number can be divided into 3 and 5, add the corresponding String into list
+and so on
+ */
 import java.util.ArrayList;
 import java.util.List;
 

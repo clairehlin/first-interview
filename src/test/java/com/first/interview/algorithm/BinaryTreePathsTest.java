@@ -20,13 +20,9 @@ class BinaryTreePathsTest {
         root.left.right = new TreeNode(5);
 
         // when
-        List<String> result = new BinaryTreePaths().apply(root);
-
         // then
-        List<String> expected = new ArrayList<>();
-        expected.add("1->2->5");
-        expected.add("1->3");
-        assertThat(result).isEqualTo(expected);
+        assertThat(new BinaryTreePaths().apply2(root)).containsExactlyInAnyOrder("1->2->5", "1->3");
+        assertThat(new BinaryTreePaths().apply(root)).containsExactlyInAnyOrder("1->2->5", "1->3");
     }
 
 }

@@ -100,4 +100,17 @@ abstract class AbstractSortTest {
         // then
         assertThat(values).containsExactly(1, 3, 7, 90);
     }
+
+    @Test
+    void can_sort_the_first_element_greater_than_the_last_element() {
+        // given
+        Integer[] values = {90, 3, 7, 1};
+
+        // when
+        Sort sort = sorting();
+        sort.apply(values);
+
+        // then
+        assertThat(values).containsExactly(1, 3, 7, 90);
+    }
 }

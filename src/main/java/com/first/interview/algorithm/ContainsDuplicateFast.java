@@ -1,5 +1,11 @@
 package com.first.interview.algorithm;
+/*
+https://leetcode.com/problems/contains-duplicate/
 
+create a set
+iterate the array
+if an element exists in a set, find duplicate
+ */
 import java.util.HashSet;
 import java.util.Set;
 

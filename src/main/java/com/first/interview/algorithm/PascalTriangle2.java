@@ -1,5 +1,11 @@
 package com.first.interview.algorithm;
-
+/*
+https://leetcode.com/problems/pascals-triangle/submissions/
+first, handle first row, only 1 element
+from 2nd row, create two for loops
+outer for loop, create rows and get the previous row
+inner for loop, add elements to each row. Each element value equals previous row (previous element value + current element value)
+ */
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +22,7 @@ public class PascalTriangle2 {
             List<Integer> row = new ArrayList<>();
             List<Integer> prevRow = triangle.get(rowNum-1);
 
-            // The first row element is always 1.
+            // The first element of a row is always 1.
             row.add(1);
 
             // Each triangle element (other than the first and last of each row)

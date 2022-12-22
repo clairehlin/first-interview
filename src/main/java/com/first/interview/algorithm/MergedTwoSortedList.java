@@ -1,5 +1,14 @@
 package com.first.interview.algorithm;
+/*
+https://leetcode.com/problems/merge-two-sorted-lists/
+create a new ListNode object called merged
+keep track of the merged head
 
+looping to compare l1.val and l2.val
+assign the smaller val of the two (l1/l2) to merged
+then l1 or l2 move forward to the next in the list node
+
+ */
 public class MergedTwoSortedList {
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
         if (l1 == null) {

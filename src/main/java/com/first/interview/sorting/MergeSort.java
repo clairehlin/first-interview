@@ -2,9 +2,9 @@ package com.first.interview.sorting;
 
 import org.apache.commons.lang3.Validate;
 // 1. Find the middle point to divide the array into two halves:
-//     2. Call mergeSort for first half:
-//     3. Call mergeSort for second half:
-//     4. Merge the two halves sorted in step 2 and 3:
+// 2. Call mergeSort for first half:
+// 3. Call mergeSort for second half:
+// 4. Merge the sorted left array and sorted right array:
 
 // O(nLogn)
 

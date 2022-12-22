@@ -1,5 +1,13 @@
 package com.first.interview.algorithm;
+/*
+https://leetcode.com/problems/valid-anagram/
 
+if the length of String s is not equal to the length of String t, they are not anagram
+
+convert both Strings to char arrays
+sort both char arrays
+if both char arrays are not equal, they are not anagram
+ */
 import java.util.Arrays;
 
 public class ValidAnagram {

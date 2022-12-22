@@ -1,5 +1,10 @@
 package com.first.interview.algorithm;
 
+/*
+https://leetcode.com/problems/palindrome-number/
+Construct a reverse number from the input
+if reverse number equals input, it is a parlindrome number
+ */
 public class PalindromeNumber {
     public boolean isParlinDrome(int x) {
         if (x < 0) {
@@ -20,3 +25,4 @@ public class PalindromeNumber {
         return reversedNum == x;
     }
 }
+

@@ -67,4 +67,9 @@ public class AdjacencyListGraphSimple implements Graph {
             }
         }
     }
+
+    void test() {
+        List<String> list = new ArrayList<>();
+        list.get(0);
+    }
 }

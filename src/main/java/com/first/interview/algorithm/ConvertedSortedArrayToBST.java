@@ -1,5 +1,20 @@
 package com.first.interview.algorithm;
+/*
+https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/
+when array length is 1, add the value to the root node and return.
+when the length of the array is 2, assign the value at array position 1 to root node,
+and assign the next value to the right subtree
 
+when array length > 3, then
+split array into half, assign the value to the current node to be equals to array[half]
+create a new left array, copy the 1st half of values in array into left array
+create a new right array, copy the 2nd half of values in array into right array
+
+recursively makes method call to call itself with input (left array), and assign the return value to root.left
+recursively makes method call to call itself with input (right array), and assign the return value to root.right
+
+
+ */
 public class ConvertedSortedArrayToBST {
     public TreeNode sortedArrayToBST(int[] nums) {
         TreeNode root = new TreeNode();

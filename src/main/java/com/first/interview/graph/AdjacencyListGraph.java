@@ -1,5 +1,8 @@
 package com.first.interview.graph;
-
+/*
+BFS - use set and queue
+DFS - use set and stack
+ */
 import org.apache.commons.lang3.Validate;
 
 import java.util.*;

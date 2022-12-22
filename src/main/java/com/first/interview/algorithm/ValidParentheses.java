@@ -1,5 +1,16 @@
 package com.first.interview.algorithm;
+/*
+https://leetcode.com/problems/valid-parentheses/
 
+create a Map, key - value pair, left parentheses as keys, right parentheses as values
+iterate input string one character by one character
+create a stack
+if map contains character as key, push the character to the stack
+if map does not contain the character as key, pop one character out from the stack,
+based on the popped character, look up in map, if the corresponding value of the character does not match popped character, return false
+
+return result of stack is empty or not
+ */
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Stack;

@@ -1,7 +1,15 @@
 package com.first.interview.algorithm;
+/*
+https://leetcode.com/problems/longest-common-prefix/
+take the first String in the String array as an example
+iterate entire array
+if the subString of the second string contains example , use indexOf(),
+and the return result is 0, it means containing prefix.
 
-import java.util.ArrayList;
-
+if the return result is NOT 0, trim down one character from the right of "example" String
+use substring()
+looping to keep trimming down example, until indexOf() return 0
+ */
 public class LongestCommonPrefix {
     public String longestCommonPrefix(String[] strs) {
         if (strs.length == 0) {

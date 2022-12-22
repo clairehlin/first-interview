@@ -1,7 +1,15 @@
 package com.first.interview.algorithm;
+/*
+https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
 
-import java.util.Arrays;
+iterate entire array
+first set the minimum price to Integer.MAX_VALUE
+to start, assume max profit is 0
 
+if the current value is less than min price, replace the min price with current value
+else if (current value - min price) > max profit, update max profit value
+return max profit value
+ */
 public class BuySell {
     public int maxProfit(int[] prices) {
         int minPrice = Integer.MAX_VALUE;

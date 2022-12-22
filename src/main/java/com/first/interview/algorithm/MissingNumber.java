@@ -1,15 +1,33 @@
 package com.first.interview.algorithm;
+/*
+https://leetcode.com/problems/missing-number/solution/
 
-import java.util.NoSuchElementException;
+bit manipulation
+iterate integer array
+take XOR bit operation on all numbers, numbers position, number length to find missing number
+array length ^ array position ^ array value = missing number
+for example, [0, 1, 3], corresponding position is 0, 1, 2
+array length = 3
+3 ^ (0 ^ 0) ^ (1 ^ 1) ^ (2 ^ 3) = (3 ^ 3) ^ (0 ^ 0) ^ (1 ^ 1) ^ 2
 
+ */
 public class MissingNumber {
+
+    public int missingNumber(int[] nums) {
+        int missing = nums.length;
+        for (int i = 0; i < nums.length; i++) {
+            missing ^= i ^ nums[i];
+        }
+        return missing;
+    }
+    /*
     public int missingNumber(int[] nums) {
         int[] temp = new int[nums.length + 1];
 
         int count = 0;
         for (int i : nums) {
             if (i == 0) {
-               count = 1;
+                count = 1;
             }
 
             if (i < nums.length) {
@@ -30,4 +48,6 @@ public class MissingNumber {
         }
         return res;
     }
+
+     */
 }

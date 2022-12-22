@@ -1,8 +1,8 @@
 package com.first.interview.sorting;
 
-import org.apache.commons.lang3.Validate;
-
 // O(n*n) n square
+//compare and swap with neighbour
+import org.apache.commons.lang3.Validate;
 
 public class BubbleSort implements Sort{
     @Override
